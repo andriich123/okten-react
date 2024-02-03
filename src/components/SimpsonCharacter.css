@@ -1,0 +1,28 @@
+.simpson-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 0.5rem;
+}
+
+.simpson-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.simpson-card__image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.simpson-card__age {
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;  
+}
