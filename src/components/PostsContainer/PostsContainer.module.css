@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.posts {
+  width: 70%;
+  max-height: 98vh;
+  overflow-y: scroll;
+}
+
+.details {
+  width: 30%;
+}
+
