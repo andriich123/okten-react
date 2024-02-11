@@ -1,0 +1,11 @@
+.commentsWrapper {
+  margin: 0 auto;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.commentFormWrapper {
+  margin: 0 auto;
+  max-width: 500px;
+}

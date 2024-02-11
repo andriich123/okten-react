@@ -1,7 +1,8 @@
-import React from "react";
+import { FC } from "react";
+import MainPage from "./pages/MainPage/MainPage";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App: FC = () => {
+  return <MainPage />;
+};
 
 export default App;
