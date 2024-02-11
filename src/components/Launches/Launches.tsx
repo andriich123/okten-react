@@ -13,7 +13,7 @@ const Launches: FC<Props> = () => {
     launchesService.getLaunches().then((res) => setLaunches(res.data));
   }, []);
 
-  const filtered = launches.filter((launch) => launch.launch_year !== "2010");
+  const filtered = launches.filter((launch) => launch.launch_year !== "2020");
 
   return (
     <div className={css.container}>
