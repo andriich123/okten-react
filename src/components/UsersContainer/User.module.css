@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.userTitle {
+  font-weight: 500;
+  font-size: 19px;
+}

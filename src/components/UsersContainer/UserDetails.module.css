@@ -1,0 +1,31 @@
+.userContainer {
+  margin: 20px;
+}
+
+.userTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.websiteLink {
+  color: #007bff; 
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+}
+
+.postsButton {
+  margin-top: 10px;
+  background-color: #007bff; 
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.postsButton:hover {
+  background-color: #0056b3;
+}

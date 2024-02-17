@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.email {
+  color: #007bff;
+}
+
+.body {
+  font-style: italic;
+}
