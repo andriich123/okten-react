@@ -11,7 +11,7 @@ const EpisodeNameContext = createContext<IContextProps>({
 });
 
 const EpisodeNameProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [episodeName, setEpisodeName] = useState<string>("");
+  const [episodeName, setEpisodeName] = useState("");
 
   return (
     <EpisodeNameContext.Provider value={{ episodeName, setEpisodeName }}>
