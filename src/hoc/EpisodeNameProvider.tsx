@@ -1,17 +1,17 @@
 import { FC, PropsWithChildren, createContext, useState } from "react";
 
 interface IContextProps {
-  episodeName: string | null;
+  episodeName: string;
   setEpisodeName: React.Dispatch<string>;
 }
 
 const EpisodeNameContext = createContext<IContextProps>({
-  episodeName: null,
+  episodeName: "",
   setEpisodeName: () => {},
 });
 
 const EpisodeNameProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [episodeName, setEpisodeName] = useState<string | null>(null);
+  const [episodeName, setEpisodeName] = useState<string>("");
 
   return (
     <EpisodeNameContext.Provider value={{ episodeName, setEpisodeName }}>
