@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header > a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.header > a:hover {
+  color: rgb(224, 240, 186);
+  transition: color 0.3s ease-in-out;
+}

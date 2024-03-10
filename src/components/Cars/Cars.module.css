@@ -1,0 +1,16 @@
+.carsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.carWrapper {
+  border-bottom: 1px solid rgb(213, 230, 143);
+  text-align: center;
+}
+
+.newCarWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}

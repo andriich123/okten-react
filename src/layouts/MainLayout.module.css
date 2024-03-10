@@ -1,0 +1,10 @@
+.headerContainer {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.contentContainer {
+  padding: 10px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
