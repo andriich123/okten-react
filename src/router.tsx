@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
-import EpisodesPage from "./pages/EpisodesPage";
-import CharactersPage from "./pages/CharactersPage";
+import { EpisodesPage } from "./pages/EpisodesPage";
+import { CharactersPage } from "./pages/CharactersPage";
 
 const router = createBrowserRouter([
   {

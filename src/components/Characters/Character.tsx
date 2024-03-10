@@ -17,4 +17,4 @@ const Character: FC<IProps> = ({ character }) => {
   );
 };
 
-export default Character;
+export { Character };

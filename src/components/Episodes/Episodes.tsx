@@ -1,42 +1,38 @@
-import { useEffect, useState } from "react";
-import { IEpisode } from "../../interfaces/episodes";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { episodesService } from "../../services/episodesService";
-import Pagination from "../Pagination/Pagination";
-import Episode from "./Episode";
+import { Pagination } from "../Pagination";
+import { Episode } from "./Episode";
 import css from "./Episodes.module.css";
+import { useAppDispatch, useAppSelector } from "../../hooks/store";
+import { episodesActions } from "../../store/slices";
 
 const Episodes = () => {
-  const [episodes, setEpisodes] = useState<IEpisode[]>([]);
-
-  const [pagination, setPagination] = useState<{
-    next: number | null;
-    prev: number | null;
-  }>({ next: null, prev: null });
-
-  const [query, setQuery] = useSearchParams();
-
-  const currentPage = !isNaN(Number(query.get("page")))
-    ? Number(query.get("page")) || 1
-    : 1;
+  const { episodes, pagination } = useAppSelector((state) => state.episodes);
+  const dispatch = useAppDispatch();
+  const [query, setQuery] = useSearchParams({ page: "1" });
+  const currentPage = Number(query.get("page")) || 1;
 
   useEffect(() => {
-    episodesService.getAll({ page: currentPage }).then(({ data: response }) => {
-      setEpisodes(response.results);
-      setPagination({
-        next: response.info.next ? currentPage + 1 : null,
-        prev: response.info.prev ? currentPage - 1 : null,
-      });
-    });
+    dispatch(episodesActions.getAll({ page: currentPage }));
   }, [currentPage]);
 
   const handleNextPage = () => {
-    setQuery({ page: pagination.next ? `${pagination.next}` : "" });
+    if (pagination && pagination.next) {
+      setQuery((query) => {
+        query.set("page", `${currentPage + 1}`);
+        return query;
+      });
+    }
   };
 
   const handlePrevPage = () => {
-    setQuery({ page: pagination.prev ? `${pagination.prev}` : "" });
+    if (pagination && pagination.prev) {
+      setQuery((query) => {
+        query.set("page", `${currentPage - 1}`);
+        return query;
+      });
+    }
   };
 
   return (
@@ -46,14 +42,17 @@ const Episodes = () => {
           <Episode key={episode.id} episode={episode} />
         ))}
       </div>
-      <Pagination
-        next={pagination.next}
-        prev={pagination.prev}
-        onNext={handleNextPage}
-        onPrev={handlePrevPage}
-      />
+
+      {pagination && (
+        <Pagination
+          next={!!pagination.next}
+          prev={!!pagination.prev}
+          onNext={handleNextPage}
+          onPrev={handlePrevPage}
+        />
+      )}
     </div>
   );
 };
 
-export default Episodes;
+export { Episodes };

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
-import { useEpisodeNameContext } from "../../hooks/useEpisodeNameContext";
+import { useAppSelector } from "../../hooks/store";
 
 const Header = () => {
-  const { episodeName } = useEpisodeNameContext();
+  const { currentEpisode } = useAppSelector((state) => state.episodes);
 
   return (
     <div className={css.header}>
-      {episodeName && <h1 className={css.episode}>{episodeName}</h1>}
+      {currentEpisode && <h1 className={css.episode}>{currentEpisode}</h1>}
       <Link to="/episodes" className={css.link}>
         Episodes
       </Link>
@@ -15,4 +15,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export { Header };

@@ -1,11 +1,7 @@
-import Characters from "../components/Characters/Characters";
+import { Characters } from "../components/Characters";
 
 const CharactersPage = () => {
-  return (
-    <div>
-      <Characters />
-    </div>
-  );
+  return <Characters />;
 };
 
-export default CharactersPage;
+export { CharactersPage };

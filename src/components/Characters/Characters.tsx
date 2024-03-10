@@ -1,38 +1,28 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { ICharacter } from "../../interfaces/characters";
-import { episodesService } from "../../services/episodesService";
-import { charactersService } from "../../services/charactersService";
-import Character from "./Character";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Character } from "./Character";
 import css from "./Characters.module.css";
-import { useEpisodeNameContext } from "../../hooks/useEpisodeNameContext";
+import { useAppDispatch, useAppSelector } from "../../hooks/store";
+import { charactersActions, episodesActions } from "../../store/slices";
 
 const Characters = () => {
-  const { id: episodeId } = useParams<{ id: string }>();
-  const [characters, setCharacters] = useState<ICharacter[]>([]);
+  const { episodeCharacters: characters } = useAppSelector(
+    (state) => state.characters
+  );
+
+  const { state: characterIds } = useLocation();
+
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { setEpisodeName } = useEpisodeNameContext();
-
-  const getCharacters = async () => {
-    const { data: episode } = await episodesService.getById(Number(episodeId));
-
-    setEpisodeName(episode.name);
-
-    const characterIds = episode.characters
-      .map((character) => character.split("/").pop())
-      .map((id) => Number(id));
-
-    const { data: characters } = await charactersService.getByIds(characterIds);
-    setCharacters(characters);
-  };
-
-  const handleNavigateBack = () => navigate(-1);
 
   useEffect(() => {
-    getCharacters();
+    dispatch(charactersActions.getAllByIds(characterIds));
+    return () => {
+      dispatch(episodesActions.setCurrentEpisode(""));
+    };
+  }, []);
 
-    return () => setEpisodeName("");
-  }, [episodeId]);
+  const handleNavigateBack = () => navigate(-1);
 
   return (
     <div>
@@ -48,4 +38,4 @@ const Characters = () => {
   );
 };
 
-export default Characters;
+export { Characters };

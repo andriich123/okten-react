@@ -2,8 +2,8 @@ import { FC } from "react";
 import css from "./Pagination.module.css";
 
 interface IProps {
-  next: number | null;
-  prev: number | null;
+  next: boolean | null;
+  prev: boolean | null;
   onNext: () => void;
   onPrev: () => void;
 }
@@ -21,4 +21,4 @@ const Pagination: FC<IProps> = ({ next, onNext, prev, onPrev }) => {
   );
 };
 
-export default Pagination;
+export { Pagination };

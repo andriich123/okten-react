@@ -1,4 +1,4 @@
-import Episodes from "../components/Episodes/Episodes";
+import { Episodes } from "../components/Episodes";
 
 const EpisodesPage = () => {
   return (
@@ -8,4 +8,4 @@ const EpisodesPage = () => {
   );
 };
 
-export default EpisodesPage;
+export { EpisodesPage };
